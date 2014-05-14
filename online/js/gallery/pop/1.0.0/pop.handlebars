@@ -1,0 +1,27 @@
+<div class="m-layer z-show {{layer}}">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<article class="lywrap">
+						<header class="lytt"><h2 class="u-tt">{{title}}</h2><span class="lyclose close">×</span></header>
+						<section class="lyct">
+							<p>{{content}}</p>
+						</section>
+						<footer class="lybt">
+							<div class="lyother">
+								<p>{{info}}</p>
+							</div>
+							<div class="lybtns">
+								<button type="button" class="u-btn confirm">确定</button>
+								{{#if cancel}}
+								<button type="button" class="u-btn u-btn-c4 cancel">取消</button>
+								{{/if}}
+							</div>
+						</footer>
+					</article>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

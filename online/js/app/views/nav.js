@@ -1,0 +1,1 @@
+define(["jquery","backbone","underscore"],function(e,t,n){var r=t.View.extend({el:"#view",initialize:function(){e(this.el).append("<p>test</p>")}});return r});

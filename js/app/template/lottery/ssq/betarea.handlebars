@@ -1,0 +1,61 @@
+<ul class="redselect clearfix">
+	{{#red}}
+	<li>
+		<button class="circular ui icon button">{{num}}</button>
+		<em class="yl">{{yl}}</em>
+	</li>
+	{{/red}}
+	<li class="set">
+		<div class="ui selection dropdown">
+		  <input type="hidden" name="gender">
+		  <div class="default text">机选红球</div>
+		  <i class="dropdown icon"></i>
+		  <div class="menu">
+			{{#each code}}
+			<div class="item" data-value="{{this}}">{{this}}个</div>
+			{{/each}}
+		  </div>
+		</div>
+	</li>
+	<li class="clear">
+		<div class="mini ui button"> 清空 </div>
+	</li>
+</ul>
+<ul class="blueselect clearfix">
+	<li>
+		<button class="circular ui icon button">01</button>
+		<em class="yl">3</em>
+	</li>
+	<li class="set">
+		<div class="ui selection dropdown">
+		  <input type="hidden" name="gender">
+		  <div class="default text">机选蓝球</div>
+		  <i class="dropdown icon"></i>
+		  <div class="menu">
+			<div class="item" data-value="1">1个</div>
+			<div class="item" data-value="0">2个</div>
+		  </div>
+		</div>
+	</li>
+	<li class="clear">
+		<div class="mini ui button"> 清空 </div>
+	</li>
+</ul>
+<p class="count">
+	您选了 <b class="red">6</b> 个红球，<b class="blue">3</b> 个篮球，共 <b class="red">3</b> 注，<b class="red">6</b> 元
+</p>
+<div class="count">
+	<p class="ui tiny button">确认选号</p>
+</div>
+<div class="ui link list code_list">
+  <a class="item">[单式] <b class="red">01 03 04 05 23 31 + 06</b>[1注，2元]  <span href="#" class="del">删除</span></a>
+ 
+</div>
+<p class="result">您总共选择了 <b class="red">6</b> 注，<b class="red">12</b> 元</p>
+<div class="ui tiny buttons">
+  <div class="ui red button ownbuy">我要自购</div>
+  <div class="or"></div>
+  <div class="ui red button coopbuy">发起合买</div>
+  <div class="or"></div>
+  <div class="ui red button tracebuy">我要追号</div>
+</div>
