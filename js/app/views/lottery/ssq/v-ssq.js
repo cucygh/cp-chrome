@@ -1,20 +1,24 @@
-define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay','pop','dropdown','tpl'], function (Backbone, $, Mssq, Mbet, Mpay,Pop,Dropdown,Tpl) {
+define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay','pop','dropdown','ssq-tpl','timer'], function (Backbone, $, Mssq, Mbet, Mpay,Pop,Dropdown,Tpl,Timer) {
 	var mssq = new Mssq(); //双色球控制器
 	var mbet = new Mbet(); //投注控制器
 	var mpay = new Mpay(); //支付控制器
 	var Q = {}; //全局临时变量
 	var Vssq = Backbone.View.extend({
-			el : '#view',
+			el : '#main',
 			model : mssq,
 			initialize : function () {
 				mbet.bind('change:code', this.bet_call);
 				mpay.bind('change:code', this.pay_call);
 				$(this.el).append('<button class="ownbuy">Pay</button>');
-				$('.dropdown').dropdown('show');
 				// 渲染模板
-				var nav_data={issue:'20140527',logined:true,username:'中传思客'};
-				$('.nav-tip').html(Tpl.nav(nav_data));
-				$('.menu:eq(0)').html(Tpl.menu({}));
+				var html=[];
+				console.debug(mssq.lott_info);
+				html.push(Tpl.nav(mssq.lott_info));
+				html.push(Tpl.menu({}));
+				$(this.el).html(html.join(''));
+				setTimeout(function () {
+					$('.dropdown').dropdown('show');
+				}, 1);
 			},
 			events : {
 				'click .ownbuy' : 'fun_ownbuy',

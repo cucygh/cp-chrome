@@ -8,6 +8,7 @@ require.config({
 		login : '../../../js/app/modules/login',
 		pop : '../../../js/gallery/pop/1.0.0/pop',
 		dropdown : '../../../js/gallery/dropdown/1.0.0/dropdown',
+		timer : '../../../js/gallery/timer/1.0.0/timer',
 		'pop-tpl' : '../../../js/gallery/pop/1.0.0/pop-tpl',
 		text : '../../../js/gallery/text/2.0.10/text',
 		math : '../../../js/gallery/math/1.0.0/math',
@@ -20,6 +21,6 @@ require.config({
 		'feedback':'../../../js/app/modules/feedback',
 		'm-pay':'../../../js/app/modules/pay',
 		'router':'../../../js/app/router',
-		'tpl':'../../../js/app/template/lottery/ssq/output-tpl'
+		'ssq-tpl':'../../../js/app/template/lottery/ssq/out'
 	}
 });
