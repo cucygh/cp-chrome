@@ -19,6 +19,9 @@ del,ins,u,s,a,a:hover{text-decoration:none;}
 body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;}
 body{background:#fff;}
 a,a:hover{color:#333;}
+.none{display:none;}
+.clearfix:after {content: ".";display: block;height: 0;visibility: hidden;clear: both;}
+.clearfix {*zoom: 1;}
 .a-bounce,.a-flip,.a-flash,.a-shake,.a-swing,.a-wobble,.a-ring{-webkit-animation:1s ease;-moz-animation:1s ease;-ms-animation:1s ease;animation:1s ease;}
 .a-fadein,.a-fadeinT,.a-fadeinR,.a-fadeinB,.a-fadeinL,.a-bouncein,.a-bounceinT,.a-bounceinR,.a-bounceinB,.a-bounceinL,.a-rotatein,.a-rotateinLT,.a-rotateinLB,.a-rotateinRT,.a-rotateinRB,.a-flipin,.a-flipinX,.a-flipinY{-webkit-animation:1s ease-out backwards;-moz-animation:1s ease-out backwards;-ms-animation:1s ease-out backwards;animation:1s ease-out backwards;}
 .a-fadeout,.a-fadeoutT,.a-fadeoutR,.a-fadeoutB,.a-fadeoutL,.a-bounceout,.a-bounceoutT,.a-bounceoutR,.a-bounceoutB,.a-bounceoutL,.a-rotateout,.a-rotateoutLT,.a-rotateoutLB,.a-rotateoutRT,.a-rotateoutRB,.a-flipout,.a-flipoutX,.a-flipoutY{-webkit-animation:1s ease-in forwards;-moz-animation:1s ease-in forwards;-ms-animation:1s ease-in forwards;animation:1s ease-in forwards;}
@@ -899,3 +902,4 @@ a,a:hover{color:#333;}
 .f-csm{cursor:move;}
 .f-usn{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
 a{color:red;}
+body:{width:430px;}

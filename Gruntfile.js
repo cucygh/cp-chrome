@@ -65,11 +65,32 @@ module.exports = function (grunt) {
 				src : 'css/img/*',
 				dest : 'online/',
 			}
+		},
+		handlebars : {
+			compile : {
+				options : {
+					amd:true,
+					namespace: false,
+					partialsUseNamespace:true,
+					expand:true
+				},
+				files : [{
+						expand : true,
+						cwd : 'js/app/template/lottery/ssq/',
+						src : '*.handlebars',
+						dest : 'js/app/template/lottery/ssq/',
+						filter : 'isFile',
+						ext : '-tpl.js'
+					}
+				]
+			}
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-contrib-handlebars');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.registerTask('build-app', ['requirejs:compile']);
 	grunt.registerTask('build', ['requirejs:js_compile_all']);
+	grunt.registerTask('template', ['handlebars:compile']);
 	grunt.registerTask('css', ['requirejs:css_compile_test', 'requirejs:css_compile_test2', 'copy:main']);
 };
