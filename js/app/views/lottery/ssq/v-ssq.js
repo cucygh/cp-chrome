@@ -17,7 +17,7 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay','pop','dropdown','ssq-tp
 				html.push(Tpl.menu({}));
 				$(this.el).html(html.join(''));
 				setTimeout(function () {
-					$('.dropdown').dropdown('show');
+					$('.dropdown').dropdown();
 				}, 1);
 			},
 			events : {
