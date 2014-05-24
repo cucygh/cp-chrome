@@ -10,7 +10,7 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 					"url" : _this.domain,
 					"name" : 'loginedUserName'
 				}, function (c) {
-					console.debug('c=',c);
+					// console.debug('c=',c);
 					if (!c) {
 						_this.set({
 							isOn : false

@@ -12,12 +12,12 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay','pop','dropdown','ssq-tp
 				$(this.el).append('<button class="ownbuy">Pay</button>');
 				// 渲染模板
 				var html=[];
-				console.debug(mssq.lott_info);
+				// console.debug(mssq.lott_info);
 				html.push(Tpl.nav(mssq.lott_info));
 				html.push(Tpl.menu({}));
 				$(this.el).html(html.join(''));
 				setTimeout(function () {
-					$('.dropdown').dropdown();
+					$('.ui.dropdown').dropdown();
 				}, 1);
 			},
 			events : {
@@ -72,7 +72,7 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay','pop','dropdown','ssq-tp
 										paytype : xValue.TypeID
 									}
 									mpay.post(d_param,function(){
-										console.debug(this);
+										// console.debug(this);
 										Q.box=new Pop({
 											title:'Pay result',
 											content:'<span>开奖时间：'+this.OpenTime+'</span>,<span>派奖时间：'+this.BonusTime+'</span>'

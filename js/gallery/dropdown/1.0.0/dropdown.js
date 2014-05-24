@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery','transition'], function ($,transition) {
 	$.fn.dropdown = function (parameters) {
 		var $allModules = $(this),
 		$document = $(document),

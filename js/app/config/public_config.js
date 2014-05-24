@@ -8,6 +8,7 @@ require.config({
 		login : '../../../js/app/modules/login',
 		pop : '../../../js/gallery/pop/1.0.0/pop',
 		dropdown : '../../../js/gallery/dropdown/1.0.0/dropdown',
+		transition : '../../../js/gallery/transition/1.0.0/transition',
 		timer : '../../../js/gallery/timer/1.0.0/timer',
 		'pop-tpl' : '../../../js/gallery/pop/1.0.0/pop-tpl',
 		text : '../../../js/gallery/text/2.0.10/text',

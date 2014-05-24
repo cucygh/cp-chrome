@@ -22,7 +22,7 @@ function program3(depth0,data) {
   return "\r\n		<a href=\"#\" class=\"login\">登录</a> | \r\n		<a href=\"#\" class=\"register\">注册</a>\r\n		";
   }
 
-  buffer += "<div class=\"nav-tip\">\r\n	<img src=\"http://img.qihoo.com/images/2008/2010/images-cp/ssq.gif\" alt=\"双色球logo\" class=\"logo\"/>\r\n	<span class=\"tips\">距 ";
+  buffer += "<div class=\"nav-tip\">\r\n	<img src=\"http://p6.qhimg.com/t01a576243610c17dcd.jpg\" alt=\"双色球logo\" width=\"52\" height=\"52\" class=\"logo\">\r\n	<span class=\"tips\">距 ";
   if (helper = helpers.issue) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.issue); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)

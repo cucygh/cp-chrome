@@ -105,9 +105,9 @@ define([], function () {
 			async : cur_issue ? true : false,
 			success : function (data) {
 				if (data) {
-					console.log(cur_issue);
+					// console.log(cur_issue);
 					if (cur_issue != undefined && cur_issue == data.issue) {
-						console.log(cur_issue, data.issue);
+						// console.log(cur_issue, data.issue);
 						setTimeout(function () {
 							get_cur_issue.call(null, id, cur_issue);
 						}, freq || 30000);
@@ -117,7 +117,7 @@ define([], function () {
 				} else {
 					return data;
 				}
-				console.log(data);
+				// console.log(data);
 			},
 			error : function () {
 				return false;
