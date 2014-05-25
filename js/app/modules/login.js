@@ -6,19 +6,30 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 			domain:'http://ygh.cp.360.cn/',
 			initialize : function () {
 				var _this = this;
+				console.log('s=',+new Date);
 				chrome.cookies.get({
 					"url" : _this.domain,
 					"name" : 'loginedUserName'
 				}, function (c) {
-					// console.debug('c=',c);
-					if (!c) {
+					if (c) {
 						_this.set({
-							isOn : false
+							isOn : true,
+							userName : decodeURIComponent(c.value)
+						});
+					}
+					console.log('f=',+new Date);
+				});
+				chrome.cookies.get({
+					"url" : _this.domain,
+					"name" : 'Q'
+				}, function (c) {
+					if (c) {
+						_this.set({
+							isOn : true,
 						});
 					} else {
 						_this.set({
-							isOn : true,
-							userName:decodeURIComponent(c.value)
+							isOn : false,
 						});
 					}
 				});
@@ -55,10 +66,11 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 						msg : '验证失败'
 					});
 				}
-			}.bind(this),
+			},
 			exit : function () {
-				var url = this.domain+"user/logout/?rt=" + new Date;
 				var _this = this;
+				var url = this.domain+"user/logout/?rt=" + new Date;
+				console.log(url);
 				Backbone.sync('read', this, {
 					url : url,
 					dataType : 'html',
@@ -73,7 +85,7 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 						});
 					}
 				});
-			}.bind(this),
+			},
 			validate : function (user, pwd) {
 				var r;
 				if (user.toString().trim() != '' && pwd.toString().trim() != '') {

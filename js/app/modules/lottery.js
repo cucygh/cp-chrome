@@ -93,8 +93,13 @@ define([], function () {
 	 * @ignore created
 	 * @return result {Object}
 	 */
-	var get_cur_issue = function (id, cur_issue, freq) {
+	var get_cur_issue = function (param) {
 		var url = domain + '/int/qcurissue';
+		var id=param.id;
+		var cur_issue=param.cur_issue;
+		var freq=param.freq;
+		var ok_call=param.ok_call||function(){};
+		var fail_call=param.fail_call||function(){};
 		$.ajax({
 			url : url,
 			type : 'GET',
@@ -105,24 +110,21 @@ define([], function () {
 			async : cur_issue ? true : false,
 			success : function (data) {
 				if (data) {
-					// console.log(cur_issue);
 					if (cur_issue != undefined && cur_issue == data.issue) {
-						// console.log(cur_issue, data.issue);
 						setTimeout(function () {
 							get_cur_issue.call(null, id, cur_issue);
-						}, freq || 30000);
+						}, freq || 3000);
 					} else {
-						return data;
+						ok_call.call(null,data);
 					}
 				} else {
-					return data;
+					fail_call.call(null);
 				}
-				// console.log(data);
 			},
 			error : function () {
-				return false;
+				fail_call.call(null);
 			},
-			timeout : 10000
+			timeout : 1000
 		})
 	};
 	/**

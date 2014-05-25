@@ -1,19 +1,22 @@
-define(['backbone', 'jquery', 'lottery', 'math', 'm-login'], function (Backbone, $, lottery, math, Login) {
-	var login = new Login();
+define(['backbone', 'jquery', 'lottery', 'math'], function (Backbone, $, lottery, math) {
+	// var login = new Login();
 	var Ssq = Backbone.Model.extend({
 			initialize : function () {
 				this.number = '';
 				this.id = '220051';
 				this.lott_info = {
-					id : '220051'
-				};
-				var lott_info = lottery.get_cur_issue(this.id);
-				if (lott_info) {
-					$.extend(this.lott_info, lott_info).bind(this);
-				}
-				$.extend(this.lott_info, {
+					id : '220051'/* ,
 					logined : login.attributes['isOn'],
-					username : login.attributes['userName']
+					username : login.attributes['userName'] */
+				};
+				var _this=this;
+				lottery.get_cur_issue({
+					id : _this.id,
+					ok_call : function (lott_info) {
+						if (lott_info) {
+							$.extend(_this.lott_info, lott_info);
+						}
+					}
 				});
 			},
 			caculate : function (red, blue) {
@@ -29,9 +32,9 @@ define(['backbone', 'jquery', 'lottery', 'math', 'm-login'], function (Backbone,
 				$.extend(opt, options);
 				return math.random(opt);
 			},
-			get_issue : lottery.get_cur_issue,
+			get_issue : lottery.get_cur_issue/* ,
 			go_login : login.login,
-			go_exit : login.exit
+			go_exit : login.exit */
 		});
 	return Ssq;
 });
