@@ -76,9 +76,9 @@ module.exports = function (grunt) {
 				},
 				files : [{
 						expand : true,
-						cwd : 'js/app/template/lottery/ssq/',
-						src : '*.handlebars',
-						dest : 'js/app/template/lottery/ssq/',
+						cwd : 'js/app/template/',
+						src : '**/*.handlebars',
+						dest : 'js/app/template/',
 						filter : 'isFile',
 						ext : '-tpl.js'
 					}

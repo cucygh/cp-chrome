@@ -7,6 +7,8 @@ require.config({
 		md5 : '../../../js/gallery/md5/1.0.0/md5',
 		login : '../../../js/app/modules/login',
 		pop : '../../../js/gallery/pop/1.0.0/pop',
+		modal : '../../../js/gallery/pop/3.0.0/modal',
+		dimmer : '../../../js/gallery/dimmer/1.0.0/dimmer',
 		dropdown : '../../../js/gallery/dropdown/1.0.0/dropdown',
 		transition : '../../../js/gallery/transition/1.0.0/transition',
 		timer : '../../../js/gallery/timer/1.0.0/timer',
@@ -22,6 +24,8 @@ require.config({
 		'feedback':'../../../js/app/modules/feedback',
 		'm-pay':'../../../js/app/modules/pay',
 		'router':'../../../js/app/router',
-		'ssq-tpl':'../../../js/app/template/lottery/ssq/out'
+		'ssq-tpl':'../../../js/app/template/lottery/ssq/out',
+		'login-tpl':'../../../js/app/template/public/login-tpl'
+		
 	}
 });

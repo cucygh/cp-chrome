@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'm-login'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Login) {
+define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'm-login','login-tpl','modal'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Login,TplLogin,Modal) {
 	var login = new Login(); //登录控制器
 	var mssq = new Mssq(); //双色球控制器
 	var mbet = new Mbet(); //投注控制器
@@ -21,7 +21,8 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				'click .ownbuy' : 'fun_ownbuy',
 				'cilck .teambuy' : 'fun_teambuy',
 				'click .red,.blue' : 'fun_count',
-				'click .exit':'fun_exit'
+				'click .exit':'fun_exit',
+				'click .login':'fun_login'
 			},
 			bet_call : function (e) {
 				switch (e.changed.code) {
@@ -109,6 +110,11 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 			fun_exit:function(){
 				console.log('exit');
 				login.exit();
+			},
+			fun_login:function(){
+				console.log('login');
+				var $login=$(TplLogin());
+				$login.modal('show');
 			}
 		});
 	return Vssq;
