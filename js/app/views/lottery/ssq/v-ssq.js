@@ -1,8 +1,8 @@
-define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'm-login','login-tpl','modal'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Login,TplLogin,Modal) {
-	var login = new Login(); //登录控制器
+define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'v-login'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Vlogin) {
 	var mssq = new Mssq(); //双色球控制器
 	var mbet = new Mbet(); //投注控制器
 	var mpay = new Mpay(); //支付控制器
+	var vlogin=new Vlogin();//登录视图
 	var Q = {}; //全局临时变量
 	var Vssq = Backbone.View.extend({
 			el : '#main',
@@ -10,12 +10,17 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 			initialize : function () {
 				mbet.bind('change:code', this.bet_call);
 				mpay.bind('change:code', this.pay_call);
-				login.bind('change:isOn', this.login_call);
 				// 渲染模板
 				var html = [];
 				html.push(Tpl.nav(mssq.lott_info));
 				html.push(Tpl.menu({}));
 				$('#main').html(html.join(''));
+				setTimeout(function () {
+					$('.ui.dropdown').dropdown();
+				}, 1);
+				$('.countdown').countdown(mssq.lott_info.EndTime * 1000, function (event) {
+					$(this).html(event.strftime('<b class="hour red">%H</b>时<b class="minute red">%M</b>分<b class="second red">%S</b>秒'));
+				});
 			},
 			events : {
 				'click .ownbuy' : 'fun_ownbuy',
@@ -38,19 +43,6 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				}
 			},
 			pay_call : function (e) {},
-			login_call : function (e) {
-				$.extend(mssq.lott_info, {
-					logined : e.attributes.isOn,
-					username : e.attributes.userName
-				});
-				$('.nav-tip').replaceWith(Tpl.nav(mssq.lott_info));
-				setTimeout(function () {
-					$('.ui.dropdown').dropdown();
-				}, 1);
-				$('.countdown').countdown(mssq.lott_info.EndTime * 1000, function (event) {
-					$(this).html(event.strftime('<b class="hour red">%H</b>时<b class="minute red">%M</b>分<b class="second red">%S</b>秒'));
-				});
-			},
 			fun_ownbuy : function () {
 				var param = {
 					buy_type : 'bet',
@@ -108,13 +100,10 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 			}
 			.bind(this),
 			fun_exit:function(){
-				console.log('exit');
-				login.exit();
+				vlogin.exit();
 			},
 			fun_login:function(){
-				console.log('login');
-				var $login=$(TplLogin());
-				$login.modal('show');
+				vlogin.show();
 			}
 		});
 	return Vssq;

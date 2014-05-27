@@ -6,7 +6,6 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 			domain:'http://ygh.cp.360.cn/',
 			initialize : function () {
 				var _this = this;
-				console.log('s=',+new Date);
 				chrome.cookies.get({
 					"url" : _this.domain,
 					"name" : 'loginedUserName'
@@ -17,7 +16,6 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 							userName : decodeURIComponent(c.value)
 						});
 					}
-					console.log('f=',+new Date);
 				});
 				chrome.cookies.get({
 					"url" : _this.domain,
@@ -51,13 +49,21 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 					this.fetch({
 						url : url,
 						success : function (data) {
-							_this.set({
-								isOn : true
-							});
+							if (data.attributes.errno == '0') {
+								_this.set({
+									isOn : true,
+									msg : 'success'
+								});
+							} else {
+								_this.set({
+									isOn : false,
+									msg : '用户名或密码不符'
+								});
+							}
 						},
 						error : function (err) {
 							_this.set({
-								msg : 'errl'
+								msg : err
 							})
 						}
 					});
@@ -70,7 +76,6 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 			exit : function () {
 				var _this = this;
 				var url = this.domain+"user/logout/?rt=" + new Date;
-				console.log(url);
 				Backbone.sync('read', this, {
 					url : url,
 					dataType : 'html',
@@ -100,6 +105,11 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 					}
 				}
 				return r;
+			},
+			reset:function(){
+				this.set({
+					msg : '初始化',
+				});
 			}
 		});
 	return Login;

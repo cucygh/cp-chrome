@@ -16,7 +16,7 @@ require.config({
 		text : '../../../js/gallery/text/2.0.10/text',
 		math : '../../../js/gallery/math/1.0.0/math',
 		'v-ssq':'../../../js/app/views/lottery/ssq/v-ssq',
-		'v-login':'../../../js/app/views/public/login',
+		'v-login':'../../../js/app/views/public/v-login',
 		'm-login':'../../../js/app/modules/login',
 		'm-ssq':'../../../js/app/modules/m-ssq',
 		'm-bet':'../../../js/app/modules/bet',
