@@ -84,7 +84,6 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 										paytype : xValue.TypeID
 									}
 									mpay.post(d_param, function () {
-										// console.debug(this);
 										Q.box = new Pop({
 												title : 'Pay result',
 												content : '<span>开奖时间：' + this.OpenTime + '</span>,<span>派奖时间：' + this.BonusTime + '</span>'
@@ -111,10 +110,21 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				console.log('exit');
 				login.exit();
 			},
-			fun_login:function(){
-				console.log('login');
-				var $login=$(TplLogin());
-				$login.modal('show');
+			fun_login : function () {
+				var $login = $(TplLogin());
+				$login.modal('setting', {
+					closable : false,
+					selector:{
+						approve:'.test'
+					},
+					onDeny : function () {
+						window.alert('Wait not yet!');
+					},
+					onApprove : function () {
+						window.alert('Approved!');
+					}
+				})
+				.modal('show');
 			}
 		});
 	return Vssq;

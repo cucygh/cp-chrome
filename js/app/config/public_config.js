@@ -26,6 +26,5 @@ require.config({
 		'router':'../../../js/app/router',
 		'ssq-tpl':'../../../js/app/template/lottery/ssq/out',
 		'login-tpl':'../../../js/app/template/public/login-tpl'
-		
 	}
 });
