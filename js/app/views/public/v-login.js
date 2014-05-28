@@ -17,10 +17,16 @@ define(['backbone', 'jquery', 'm-login', 'login-tpl', 'modal'], function (Backbo
 				}
 			},
 			msg_call : function (e) {
-				if (e.attributes.msg != 'success') {
-					console.log(e.attributes.msg);
-					$login.find('.error .header').html(e.attributes.msg).parent().show();
-				}else{
+				if (e.attributes.msg != 'ok') {
+					var msg = e.attributes.msg.replace(/\:t\=\d+/g, '');
+					if (msg.indexOf('验证') > -1) {
+						$login.find('.auth').show();
+					}
+					if (msg) {
+						$login.find('.error .header').html(msg).parent().show();
+					}
+					$login.find('.auth img').trigger('click');
+				} else {
 					$login.modal('hide').remove();
 				}
 			},
@@ -34,14 +40,20 @@ define(['backbone', 'jquery', 'm-login', 'login-tpl', 'modal'], function (Backbo
 					onApprove:function(){
 						var user=$('#user').val();
 						var pwd=$('#pwd').val();
-						login.login(user,pwd,1);
+						var captcha=$('#captcha');
+						captcha=captcha.is(':visible')?captcha.val():'';
+						login.login(user,pwd,1,captcha);
 						return false;
 					},
 					onDeny:function(){
-						login.reset();
 						$login.modal('hide').remove();
 					}
 				}).modal('show');
+				$login.on('click','.auth img',function(){
+					var $self=$(this);
+					var url=$self.attr('src').replace(/t=\d+/g,'t='+(+new Date()));
+					$self.attr('src',url);
+				});
 			},
 			exit:function(){
 				login.exit();

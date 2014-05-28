@@ -11,15 +11,26 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				mbet.bind('change:code', this.bet_call);
 				mpay.bind('change:code', this.pay_call);
 				// 渲染模板
-				var html = [];
+				var html = [],config_bet={red:[]};
+				var red=config_bet.red;
 				html.push(Tpl.nav(mssq.lott_info));
 				html.push(Tpl.menu({}));
+				for(var i=1;i<34;i++){
+					red.push({num:i<10?'0'+i:i});
+				}
+				html.push(Tpl.bet(config_bet));
 				$('#main').html(html.join(''));
+				/* 垂直导航 */
 				setTimeout(function () {
-					$('.ui.dropdown').dropdown();
+					$('.ui.dropdown').dropdown({
+						onChange:function(e){
+							console.debug(e);
+						}
+					});
 				}, 1);
+				/* 倒计时 */
 				$('.countdown').countdown(mssq.lott_info.EndTime * 1000, function (event) {
-					$(this).html(event.strftime('<b class="hour red">%H</b>时<b class="minute red">%M</b>分<b class="second red">%S</b>秒'));
+					$(this).html(event.strftime('<b class="day red">%D</b>天<b class="hour red">%H</b>时<b class="minute red">%M</b>分<b class="second red">%S</b>秒'));
 				});
 			},
 			events : {

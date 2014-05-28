@@ -16,14 +16,14 @@ body{width:780px;height:480px;}
 .red{color:red;}
 .blue{color:blue;}
 a{text-decoration:none;}
-
+.none{display:none;}
 .logo{position:absolute;left:12px;}
 .tips{margin-left:65px;}
 .countdown{display:inline-block;margin:0;}
 .warn{margin-left:13em;}
 .profile{float:right;color:#999;}
 .ui.menu{margin-top:0.5rem;}
-/* .ui.segment{height:430px;background:#FFFFCC;} */
+.ui.ssq-area{height:430px;background:#FFFFCC;}
 /* sub nav */
 .ui.menu.vertical.subnav{width:1.5rem;display:inline-block;}
 .ui.menu.vertical.subnav .item{padding:0.7rem 0.25rem;background:#fff;color:#999;}
@@ -37,7 +37,7 @@ a{text-decoration:none;}
 .select ul li{display:inline-block;width:35px;float:left;text-align:center;}
 .select .redselect{width: 350px;display: inline-block;border: 1px solid #eee;padding: 5px 3px;}
 .select .blueselect{width:180px;display:inline-block;border: 1px solid #eee;padding: 5px 3px;}
-/* .select .yl{margin-left:0.8em;} */
+.select .yl{margin-left:0.8em;}
 .select .ui.icon.button{padding:0.6em;}
 .select .set{width:90px;}
 .select .clear{width:55px;}

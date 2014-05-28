@@ -116,7 +116,6 @@ define(['jquery','dimmer'], function ($,dimmer) {
 				},
 
 				attachEvents : function (selector, event) {
-					console.debug(selector);
 					var
 					$toggle = $(selector);
 					event = $.isFunction(module[event])
@@ -568,7 +567,6 @@ define(['jquery','dimmer'], function ($,dimmer) {
 								object = object[camelCaseValue];
 							} else if (object[camelCaseValue] !== undefined) {
 								found = object[camelCaseValue];
-								console.debug('found=',found);
 								return false;
 							} else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
 								object = object[value];
@@ -580,8 +578,6 @@ define(['jquery','dimmer'], function ($,dimmer) {
 							}
 						});
 					}
-					console.debug('object=',object);
-					console.debug('passedArguments=',passedArguments);
 					if ($.isFunction(found)) {
 						response = found.apply(context, passedArguments);
 					} else if (found !== undefined) {

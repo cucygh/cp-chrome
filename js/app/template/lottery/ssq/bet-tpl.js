@@ -12,11 +12,7 @@ function program1(depth0,data) {
   if (helper = helpers.num) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.num); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</button>\r\n						<em class=\"yl\">";
-  if (helper = helpers.yl) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.yl); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</em>\r\n					</li>\r\n					";
+    + "</button>\r\n						<em class=\"yl\"></em>\r\n					</li>\r\n					";
   return buffer;
   }
 
@@ -31,7 +27,7 @@ function program3(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"ui stacked segment\">\r\n		<div class=\"ui vertical icon menu subnav\">\r\n		  <a class=\"item\">常规选号</a>\r\n		  <a class=\"red item active\">胆拖选号</a>\r\n		  <a class=\"item\">单式上传</a>\r\n		  <a class=\"item\">粘贴选号</a>\r\n		  <a class=\"item\">机选投注</a>\r\n		  <a class=\"item\">购彩套餐</a>\r\n		</div>\r\n		<aside class=\"panel\">\r\n			<b>上期开奖：<b class=\"red\">01 04 11 15 21 33</b> + <b class=\"blue\">06</b></b>\r\n			<article class=\"select bet-area\">\r\n				<ul class=\"redselect clearfix\">\r\n					";
+  buffer += "<div class=\"ui stacked segment ssq-area\">\r\n		<div class=\"ui vertical icon menu subnav\">\r\n		  <a class=\"item\">常规选号</a>\r\n		  <a class=\"red item active\">胆拖选号</a>\r\n		  <a class=\"item\">单式上传</a>\r\n		  <a class=\"item\">粘贴选号</a>\r\n		  <a class=\"item\">机选投注</a>\r\n		  <a class=\"item\">购彩套餐</a>\r\n		</div>\r\n		<aside class=\"panel\">\r\n			<b>上期开奖：<b class=\"red\">01 04 11 15 21 33</b> + <b class=\"blue\">06</b></b>\r\n			<article class=\"select bet-area\">\r\n				<ul class=\"redselect clearfix\">\r\n					";
   options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}
   if (helper = helpers.red) { stack1 = helper.call(depth0, options); }
   else { helper = (depth0 && depth0.red); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
