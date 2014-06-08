@@ -65,3 +65,5 @@ a{text-decoration:none;}
 .ui.compact.menu.code_basket{float:right;margin-top:-8px;margin-right:30px;color:red!important;}
 .code_basket .item{color:red!important;}
 .code_basket:after{content:'.';visibility:hidden;zoom:1;}
+.code_list{display:inline-block;background: #fff;width:685px;height: 125px;padding: 5px;overflow-y:scroll;overflow-x:hidden;}
+.ui.buttons.random_list{vertical-align:top;}
