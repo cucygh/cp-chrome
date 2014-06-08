@@ -1,3 +1,4 @@
+@import '../../../semantic/collections/message.css';
 @import '../../../semantic/collections/menu.css';
 @import '../../../semantic/collections/form.css';
 @import '../../../semantic/modules/dropdown.css';
@@ -37,7 +38,8 @@ a{text-decoration:none;}
 .select ul li{display:inline-block;width:35px;float:left;text-align:center;}
 .select .redselect{width: 350px;display: inline-block;border: 1px solid #eee;padding: 5px 3px;}
 .select .blueselect{width:180px;display:inline-block;border: 1px solid #eee;padding: 5px 3px;}
-.select .yl{margin-left:0.8em;}
+.select .yl{margin-left:0em;}
+.select .yl:after{content:'.';height:0;width:0;display:block;line-height:0;visibility:hidden;}
 .select .ui.icon.button{padding:0.6em;}
 .select .set{width:90px;}
 .select .clear{width:55px;}
@@ -45,9 +47,21 @@ a{text-decoration:none;}
 .clear .ui.mini.button{padding: 0.4em;margin-top: 0.3em;margin-left: -1.5em;}
 .select .count{text-align:center;}
 .select .code_list{background: #fff;height: 80px;padding: 5px;overflow-y:scroll;overflow-x:hidden;}
-.select .code_list .del{float:right;}
+.select .code_list .del{float:right;}   
 .select .result{display:inline-block;width:320px;}
 /* reporter */
 .panel .reporter{display:inline-block;width:160px;height:400px;margin:-1.5rem 0 0 0.3rem;padding:0;vertical-align:top;background:#FFCCCC;}
 /*  login reset */
 .ui.modal{width:46%;margin-left:-23%;}
+/* ------ */
+.redarea,.bluearea{display:inline-block;text-align:center;}
+.redarea{width:550px;}
+.bluearea{width:220px;}
+#red_r_num{margin-left:10em;}
+#blue_r_num{margin-left:15em;}
+.bet{text-align:center;}
+.ui.menu.main-menu{background-color:#c70000;}
+.ui.tiered.menu .sub.menu{background-color:#fff;}
+.ui.compact.menu.code_basket{float:right;margin-top:-8px;margin-right:30px;color:red!important;}
+.code_basket .item{color:red!important;}
+.code_basket:after{content:'.';visibility:hidden;zoom:1;}
