@@ -3,77 +3,35 @@ define(['handlebars'], function(Handlebars) {
 return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing;
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\r\n					<li>\r\n						<button class=\"circular ui icon button\">";
-  if (helper = helpers.num) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.num); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += "\r\n			<li><div class=\"circular ui icon button\">";
+  if (helper = helpers.red) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.red); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</button>\r\n						<em class=\"yl\">8</em>\r\n					</li>\r\n					";
+    + "</div><span class=\"yl none\">01</span><input type=\"checkbox\" class=\"none\"/></li>\r\n			";
   return buffer;
   }
 
 function program3(depth0,data) {
   
   var buffer = "";
-  buffer += "\r\n							<option value=\""
+  buffer += "\r\n			<li><div class=\"circular ui icon button\">"
     + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
-    + "\">"
-    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
-    + "</option>\r\n						";
+    + "</div><span class=\"yl none\">12</span><input type=\"checkbox\" class=\"none\"/></li>\r\n			";
   return buffer;
   }
 
-function program5(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\r\n						<li>\r\n							<button class=\"circular ui icon button\">";
-  if (helper = helpers.num) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.num); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</button>\r\n							<em class=\"yl\">9</em>\r\n						</li>\r\n					";
-  return buffer;
-  }
-
-function program7(depth0,data) {
-  
-  var buffer = "";
-  buffer += "\r\n								<option value=\""
-    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
-    + "\">"
-    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
-    + "</option>\r\n							";
-  return buffer;
-  }
-
-  buffer += "<div class=\"ui stacked segment ssq-area\">\r\n		<div class=\"ui vertical icon menu subnav\">\r\n		  <a class=\"item\">常规选号</a>\r\n		  <a class=\"red item active\">胆拖选号</a>\r\n		  <a class=\"item\">单式上传</a>\r\n		  <a class=\"item\">粘贴选号</a>\r\n		  <a class=\"item\">机选投注</a>\r\n		  <a class=\"item\">购彩套餐</a>\r\n		</div>\r\n		<aside class=\"panel\">\r\n			<b>上期开奖：<b class=\"red\">01 04 11 15 21 33</b> + <b class=\"blue\">06</b></b>\r\n			<article class=\"select bet-area\">\r\n				<ul class=\"redselect clearfix\">\r\n					";
-  options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}
-  if (helper = helpers.red) { stack1 = helper.call(depth0, options); }
-  else { helper = (depth0 && depth0.red); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
-  if (!helpers.red) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}); }
+  buffer += "<article class=\"betarea\">\r\n	<strong style=\"margin-left:2em;\">玩法提示：</strong>至少选6个红球和1个蓝球组合成一注彩票，单注最高奖金<b class=\"red\">1000万</b>元\r\n	<div class=\"redarea select\">\r\n		<p><strong class=\"red\">红球区 </strong>至少选择6个球</p>\r\n		<ul>\r\n			";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.red), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\r\n					<li class=\"set\">\r\n						<select name=\"\" id=\"red_select\">\r\n						";
-  options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data}
-  if (helper = helpers.red_select) { stack1 = helper.call(depth0, options); }
-  else { helper = (depth0 && depth0.red_select); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
-  if (!helpers.red_select) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data}); }
+  buffer += "\r\n		</ul>\r\n	</div>\r\n	<div class=\"bluearea select\">\r\n		<p><strong class=\"blue\">蓝球区 </strong>至少选择1个球</p>\r\n		<ul>\r\n			";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.blue), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\r\n						</select>\r\n					</li>\r\n					<li class=\"clear\">\r\n						<div class=\"mini ui button\"> 机选 </div>\r\n					</li>\r\n					<li class=\"clear\">\r\n						<div class=\"mini ui button\"> 清空 </div>\r\n					</li>\r\n				</ul>\r\n				<ul class=\"blueselect clearfix\">\r\n					";
-  options={hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data}
-  if (helper = helpers.blue) { stack1 = helper.call(depth0, options); }
-  else { helper = (depth0 && depth0.blue); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
-  if (!helpers.blue) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data}); }
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\r\n					<li class=\"set\">\r\n						<select name=\"\" id=\"blue_select\">\r\n							";
-  options={hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data}
-  if (helper = helpers.blue_select) { stack1 = helper.call(depth0, options); }
-  else { helper = (depth0 && depth0.blue_select); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
-  if (!helpers.blue_select) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data}); }
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\r\n						</select>\r\n					</li>\r\n					<li class=\"clear\">\r\n						<div class=\"mini ui button\"> 机选 </div>\r\n					</li>\r\n					<li class=\"clear\">\r\n						<div class=\"mini ui button\"> 清空 </div>\r\n					</li>\r\n				</ul>\r\n				<p class=\"count\">\r\n					您选了 <b class=\"red\">6</b> 个红球，<b class=\"blue\">3</b> 个篮球，共 <b class=\"red\">3</b> 注，<b class=\"red\">6</b> 元\r\n				</p>\r\n				<div class=\"count\">\r\n					<p class=\"ui tiny button\">确认选号</p>\r\n				</div>\r\n				<div class=\"ui link list code_list\">\r\n				  <a class=\"item\">[单式] <b class=\"red\">01 03 04 05 23 31 + 06</b>[1注，2元]  <span href=\"#\" class=\"del\">删除</span></a>\r\n				</div>\r\n				<p class=\"result\">您总共选择了 <b class=\"red\">6</b> 注，<b class=\"red\">12</b> 元</p>\r\n				<div class=\"ui tiny buttons\">\r\n				  <div class=\"ui red button ownbuy\">我要自购</div>\r\n				  <div class=\"or\"></div>\r\n				  <div class=\"ui red button coopbuy\">发起合买</div>\r\n				  <div class=\"or\"></div>\r\n				  <div class=\"ui red button tracebuy\">我要追号</div>\r\n				</div>\r\n			</article>\r\n			<div class=\"ui raised segment reporter\">\r\n				<div class=\"ui red ribbon label\" style=\"width: 173px;left: -1.2rem;\">投注情报站</div>\r\n				<p>奖池：<b class=\"red\">1</b>亿<b class=\"red\">9013</b>万<b class=\"red\">2569</b>元</p>\r\n				<dl>\r\n					<dt><p>统计：第201448期</p></dt>\r\n					<dd><p>一等：<b class=\"red\">23</b>注</p></dd>\r\n					<dd><p>每注：<b class=\"red\">500</b>,<b class=\"red\">2347</b>元</p></dd>\r\n					<dd><p>二等：<b class=\"red\">567</b>注</p></dd>\r\n					<dd><p>每注：<b class=\"red\">500</b>,<b class=\"red\">2347</b>元</p></dd>\r\n				</dl>\r\n				<p>红球热码：<b class=\"red\">01 04 11 22</b></p>\r\n				<p>红球推荐：<b class=\"red\">01 04 11 22</b></p>\r\n				<p>蓝球热码：<b class=\"blue\">03 04 11 12</b></p>\r\n				<p>蓝球推荐：<b class=\"blue\">07 09 11 13</b></p>\r\n				<dl>\r\n					<dt><p>论坛热帖：</p></dt>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n					<dd><a href=\"#\" class=\"hot\">双色球杀号开始</a></dd>\r\n				</dl>\r\n			</div>\r\n		</aside>\r\n</div>\r\n";
+  buffer += "\r\n		</ul>\r\n	</div>\r\n	<p>\r\n			<select name=\"\" id=\"red_r_num\">\r\n				<option value=\"0\">机选红球</option>\r\n				<option value=\"6\">6</option>\r\n				<option value=\"7\">7</option>\r\n				<option value=\"8\">8</option>\r\n				<option value=\"9\">9</option>\r\n				<option value=\"10\">10</option>\r\n				<option value=\"11\">11</option>\r\n				<option value=\"12\">12</option>\r\n			</select>\r\n			<input type=\"checkbox\" name=\"\" id=\"\"/>遗漏\r\n			<input type=\"checkbox\" name=\"\" id=\"\"/>定胆\r\n			<a href=\"\" class=\"clear\">清空</a>\r\n			<select name=\"\" id=\"blue_r_num\">\r\n				<option value=\"0\">机选蓝球</option>\r\n				<option value=\"6\">6</option>\r\n				<option value=\"7\">7</option>\r\n				<option value=\"8\">8</option>\r\n				<option value=\"9\">9</option>\r\n				<option value=\"10\">10</option>\r\n				<option value=\"11\">11</option>\r\n				<option value=\"12\">12</option>\r\n			</select>\r\n			<input type=\"checkbox\" name=\"\" id=\"\"/>遗漏\r\n			<input type=\"checkbox\" name=\"\" id=\"\"/>定胆\r\n			<a href=\"\" class=\"clear\">清空</a>\r\n	</p>\r\n	<p class=\"bet\">\r\n		共选 <b class=\"red\">0</b> 注, <b class=\"red\">0</b> 元\r\n	</p>\r\n	<div class=\"bet\">\r\n		<div class=\"ui youtube button\">确认选号</div>\r\n	</div>\r\n	<div class=\"ui yellow  message\">目前奖池 <b class=\"red\">5553</b> 万 <b class=\"red\">4992</b> 元，至少可以开出 <b class=\"red\">11</b> 注500万大奖\r\n		<div class=\"ui compact menu code_basket\">\r\n		  <a class=\"item\">\r\n			<div class=\"floating ui red label\">￥10</div>\r\n			双色球号码篮\r\n		  </a>\r\n		</div>\r\n	</div>\r\n</article>\r\n";
   return buffer;
   })
 
