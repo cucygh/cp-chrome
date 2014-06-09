@@ -51,3 +51,4 @@ a{text-decoration:none;}
 .panel .reporter{display:inline-block;width:160px;height:400px;margin:-1.5rem 0 0 0.3rem;padding:0;vertical-align:top;background:#FFCCCC;}
 /*  login reset */
 .ui.modal{width:46%;margin-left:-23%;}
+.red_select,.blue_select{height:100px;}

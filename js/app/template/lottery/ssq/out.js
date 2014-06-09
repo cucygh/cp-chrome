@@ -10,4 +10,4 @@ define(['handlebars', 'menu-tpl', 'nav-tpl', 'bet-tpl'], function (handlebars, M
 			return Bet(data)
 		}
 	}
-})
+});

@@ -11,12 +11,23 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				mbet.bind('change:code', this.bet_call);
 				mpay.bind('change:code', this.pay_call);
 				// 渲染模板
-				var html = [],config_bet={red:[]};
-				var red=config_bet.red;
+				var html = [], config_bet = {
+					red : [],
+					red_select : [],
+					blue : [],
+					blue_select : []
+				};
 				html.push(Tpl.nav(mssq.lott_info));
 				html.push(Tpl.menu({}));
 				for(var i=1;i<34;i++){
-					red.push({num:i<10?'0'+i:i});
+					config_bet.red.push({num:i<10?'0'+i:i});
+					if(i>5&&i<21){
+						config_bet.red_select.push(i);
+					}
+					if(i<17){
+						config_bet.blue.push({num:i<10?'0'+i:i});
+						config_bet.blue_select.push(i);
+					}
 				}
 				html.push(Tpl.bet(config_bet));
 				$('#main').html(html.join(''));
@@ -45,11 +56,9 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				case '0':
 					mpay.post();
 					break;
-
 				case '':
 				case '':
 					break;
-
 				default:
 				}
 			},
@@ -69,7 +78,7 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 					var xValue = this.xValue;
 					var code = this.xCode;
 					if (code == 0) {
-						var frame = '<input type="text" value="ss" id="user"><input type="password" value="ygh13284705287" id="pwd"><button class="confirm">ok</button>'
+						var frame = '<input type="text" value="ss" id="user"><input type="password" value="ygh13284705287" id="pwd"><button class="confirm">ok</button>';
 							Q.box = new Pop({
 								title : 'Pay input',
 								content : frame,
@@ -83,7 +92,7 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 										orderid : xValue.OrderID,
 										ordername : xValue.LotName,
 										ordertime : xValue.OrderTime,
-										paypass : "ygh13284705287",
+										paypass : "",
 										paytype : xValue.TypeID
 									}
 									mpay.post(d_param, function () {

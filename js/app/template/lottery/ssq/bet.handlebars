@@ -14,40 +14,39 @@
 					{{#red}}
 					<li>
 						<button class="circular ui icon button">{{num}}</button>
-						<em class="yl"></em>
+						<em class="yl">8</em>
 					</li>
 					{{/red}}
 					<li class="set">
-						<div class="ui selection dropdown">
-						  <input type="hidden" name="gender">
-						  <div class="default text">机选红球</div>
-						  <i class="dropdown icon"></i>
-						  <div class="menu">
-							{{#each code}}
-							<div class="item" data-value="{{this}}">{{this}}个</div>
-							{{/each}}
-						  </div>
-						</div>
+						<select name="" id="red_select">
+						{{#red_select}}
+							<option value="{{this}}">{{this}}</option>
+						{{/red_select}}
+						</select>
+					</li>
+					<li class="clear">
+						<div class="mini ui button"> 机选 </div>
 					</li>
 					<li class="clear">
 						<div class="mini ui button"> 清空 </div>
 					</li>
 				</ul>
 				<ul class="blueselect clearfix">
-					<li>
-						<button class="circular ui icon button">01</button>
-						<em class="yl">3</em>
-					</li>
+					{{#blue}}
+						<li>
+							<button class="circular ui icon button">{{num}}</button>
+							<em class="yl">9</em>
+						</li>
+					{{/blue}}
 					<li class="set">
-						<div class="ui selection dropdown">
-						  <input type="hidden" name="gender">
-						  <div class="default text">机选蓝球</div>
-						  <i class="dropdown icon"></i>
-						  <div class="menu">
-							<div class="item" data-value="1">1个</div>
-							<div class="item" data-value="0">2个</div>
-						  </div>
-						</div>
+						<select name="" id="blue_select">
+							{{#blue_select}}
+								<option value="{{this}}">{{this}}</option>
+							{{/blue_select}}
+						</select>
+					</li>
+					<li class="clear">
+						<div class="mini ui button"> 机选 </div>
 					</li>
 					<li class="clear">
 						<div class="mini ui button"> 清空 </div>
@@ -61,7 +60,6 @@
 				</div>
 				<div class="ui link list code_list">
 				  <a class="item">[单式] <b class="red">01 03 04 05 23 31 + 06</b>[1注，2元]  <span href="#" class="del">删除</span></a>
-				 
 				</div>
 				<p class="result">您总共选择了 <b class="red">6</b> 注，<b class="red">12</b> 元</p>
 				<div class="ui tiny buttons">
