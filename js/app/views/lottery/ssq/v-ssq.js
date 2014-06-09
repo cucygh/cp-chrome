@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'v-login','v-remider'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Vlogin,Vremider) {
+define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'v-login','v-remider','store'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Vlogin,Vremider,Store) {
 	var mssq = new Mssq(); //双色球控制器
 	var mbet = new Mbet(); //投注控制器
 	var mpay = new Mpay(); //支付控制器
@@ -141,7 +141,39 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				}
 			},
 			fun_confirm:function(){
-				Vremider.remider('alert','号码少了','至少选择6个红球+1个篮球')
+				var $area = $('.redarea');
+				var red=[],blue=[];
+				var code,money=$('.bet .money').text();
+				if(money<2){
+					Vremider.remider('alert','号码少了','至少选择6个红球+1个篮球');
+					return;
+				}
+				$area.find('.button.red').each(function(index,item){
+					red.push($(item).text());
+				});
+				$area=$('.bluearea');
+				$area.find('.button.blue').each(function(index,item){
+					blue.push($(item).text());
+				});
+				code=red.join(' ')+'+'+blue.join(' ');
+				Store.set('ssq_code',code);
+				this.fun_clear();
+				this.fun_store_count();
+				
+			},
+			fun_store_count:function(){
+				var code,count=0,tmp=[];
+				code=Store.get('ssq_code')||'';
+				console.log(code);
+				if(!code){
+					return;
+				}	
+				code=code.split(';');
+				for(var i=0,len=code.length;i<len;i++){
+					tmp=code[i].split('+');
+					count+=this.model.caculate(tmp[0].split(' ').length,tmp[1].split(' ').length);
+				}
+				$('.code_basket .label').text('￥'+count*2);
 			},
 			pay_call : function (e) {},
 			fun_ownbuy : function () {

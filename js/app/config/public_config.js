@@ -11,6 +11,7 @@ require.config({
 		dropdown : '../../../js/gallery/dropdown/1.0.0/dropdown',
 		transition : '../../../js/gallery/transition/1.0.0/transition',
 		timer : '../../../js/gallery/timer/1.0.0/timer',
+		store : '../../../js/gallery/store/1.0.0/store',
 		'pop-tpl' : '../../../js/gallery/pop/1.0.0/pop-tpl',
 		text : '../../../js/gallery/text/2.0.10/text',
 		math : '../../../js/gallery/math/1.0.0/math',
