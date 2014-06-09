@@ -1,13 +1,10 @@
 define(['backbone', 'jquery', 'lottery', 'math'], function (Backbone, $, lottery, math) {
-	// var login = new Login();
 	var Ssq = Backbone.Model.extend({
 			initialize : function () {
 				this.number = '';
 				this.id = '220051';
 				this.lott_info = {
-					id : '220051'/* ,
-					logined : login.attributes['isOn'],
-					username : login.attributes['userName'] */
+					id : '220051'
 				};
 				var _this=this;
 				lottery.get_cur_issue({
@@ -32,9 +29,7 @@ define(['backbone', 'jquery', 'lottery', 'math'], function (Backbone, $, lottery
 				$.extend(opt, options);
 				return math.random(opt);
 			},
-			get_issue : lottery.get_cur_issue/* ,
-			go_login : login.login,
-			go_exit : login.exit */
+			get_issue : lottery.get_cur_issue
 		});
 	return Ssq;
 });

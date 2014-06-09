@@ -1,0 +1,44 @@
+{{#if alert}}
+	<div class="ui modal">
+	  <i class="close icon"></i>
+	  <div class="header">
+		{{title}}
+	  </div>
+	  <div class="content">
+		<div class="left">
+			<i class="warning icon"></i>
+		</div>
+		<div class="right">
+		  {{content}}
+		</div>
+	  </div>
+	  <div class="actions">
+		<div class="ui button confirm">
+		  {{confirm}}
+		</div>
+	  </div>
+	</div>
+{{else}}
+	<div class="ui modal">
+	  <i class="close icon"></i>
+	  <div class="header">
+		{{title}}
+	  </div>
+	  <div class="content">
+		<div class="left">
+			<i class="remove circle icon"></i>
+		</div>
+		<div class="right">
+		  {{content}}
+		</div>
+	  </div>
+	  <div class="actions">
+		<div class="ui button cancel">
+		  {{cancel}}
+		</div>
+		<div class="ui button confirm">
+		  {{confirm}}
+		</div>
+	  </div>
+	</div>
+{{/if}}

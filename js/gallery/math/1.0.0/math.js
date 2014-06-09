@@ -86,7 +86,7 @@ define([], function () {
 			return typeof options.split_str !== 'undefined' ? ar.join(options.split_str) : ar;
 		};
 		var result = [];
-		var count = Q.number.combo(options.max - options.min + 1 - options.share.length - options.shahao.length, options.size);
+		var count = combo(options.max - options.min + 1 - options.share.length - options.shahao.length, options.size);
 		if (count < options.count) {
 			options.repeat_team = 1;
 		}

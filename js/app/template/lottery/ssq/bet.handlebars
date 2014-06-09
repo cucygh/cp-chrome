@@ -4,7 +4,7 @@
 		<p><strong class="red">红球区 </strong>至少选择6个球</p>
 		<ul>
 			{{#each red}}
-			<li><div class="circular ui icon button">{{this}}</div><span class="yl none">01</span><input type="checkbox" class="none"/></li>
+			<li><div class="circular ui icon button">{{num}}</div><span class="yl none">01</span><input type="checkbox" class="dan none"/></li>
 			{{/each}}
 		</ul>
 	</div>
@@ -12,48 +12,40 @@
 		<p><strong class="blue">蓝球区 </strong>至少选择1个球</p>
 		<ul>
 			{{#each blue}}
-			<li><div class="circular ui icon button">{{this}}</div><span class="yl none">12</span><input type="checkbox" class="none"/></li>
+			<li><div class="circular ui icon button">{{num}}</div><span class="yl none">12</span><input type="checkbox" class="dan none"/></li>
 			{{/each}}
 		</ul>
 	</div>
 	<p>
 			<select name="" id="red_r_num">
 				<option value="0">机选红球</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
+				{{#each red_random}}
+				<option value="{{this}}">{{this}}</option>
+				{{/each}}
 			</select>
-			<input type="checkbox" name="" id=""/>遗漏
-			<input type="checkbox" name="" id=""/>定胆
-			<a href="" class="clear">清空</a>
-			<select name="" id="blue_r_num">
+			<input type="checkbox" id="red_yl"/>遗漏
+			<input type="checkbox" id="red_dan"/>定胆
+			<a href="#" class="clear red_clear">清空</a>
+			<select id="blue_r_num">
 				<option value="0">机选蓝球</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
+				{{#each blue_random}}
+				<option value="{{this}}">{{this}}</option>
+				{{/each}}
 			</select>
-			<input type="checkbox" name="" id=""/>遗漏
-			<input type="checkbox" name="" id=""/>定胆
-			<a href="" class="clear">清空</a>
+			<input type="checkbox" id="blue_yl"/>遗漏
+			<input type="checkbox" id="blue_dan"/>定胆
+			<a href="#" class="clear blue_clear">清空</a>
 	</p>
 	<p class="bet">
-		共选 <b class="red">0</b> 注, <b class="red">0</b> 元
+		共选 <b class="red count">0</b> 注, <b class="red money">0</b> 元
 	</p>
 	<div class="bet">
-		<div class="ui youtube button">确认选号</div>
+		<div class="ui youtube button" id="confirm">确认选号</div>
 	</div>
 	<div class="ui yellow  message">目前奖池 <b class="red">5553</b> 万 <b class="red">4992</b> 元，至少可以开出 <b class="red">11</b> 注500万大奖
 		<div class="ui compact menu code_basket">
 		  <a class="item">
-			<div class="floating ui red label">￥10</div>
+			<div class="floating ui red label">￥0</div>
 			双色球号码篮
 		  </a>
 		</div>

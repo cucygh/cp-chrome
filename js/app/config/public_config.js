@@ -16,6 +16,7 @@ require.config({
 		math : '../../../js/gallery/math/1.0.0/math',
 		'v-ssq':'../../../js/app/views/lottery/ssq/v-ssq',
 		'v-login':'../../../js/app/views/public/v-login',
+		'v-remider':'../../../js/app/views/public/v-remider',
 		'm-login':'../../../js/app/modules/m-login',
 		'm-ssq':'../../../js/app/modules/m-ssq',
 		'm-bet':'../../../js/app/modules/m-bet',
@@ -24,6 +25,7 @@ require.config({
 		'm-pay':'../../../js/app/modules/pay',
 		'router':'../../../js/app/router',
 		'ssq-tpl':'../../../js/app/template/lottery/ssq/out',
+		'remider-tpl':'../../../js/app/template/public/remider-tpl',
 		'login-tpl':'../../../js/app/template/public/login-tpl'
 	}
 });
