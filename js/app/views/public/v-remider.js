@@ -8,9 +8,14 @@ define(['modal','remider-tpl'], function (Modal,Tplremider) {
 				onApprove : function () {
 					$sel.remove();
 				},
-				onDeny:function(){
+				onDeny : function () {
 					$sel.remove();
-				}
+				},
+				selector : {
+					close : '.close, .actions .button',
+					approve : '.actions .positive, .actions .approve, .actions .confirm',
+					deny : '.actions .negative, .actions .deny, .actions .cancel'
+				},
 			}).modal('show');
 			break;
 		case 'prompt':
