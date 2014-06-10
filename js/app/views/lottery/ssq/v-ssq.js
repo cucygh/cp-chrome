@@ -28,7 +28,8 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 						config_bet.blue.push({num:i<10?'0'+i:i});
 						config_bet.blue_random.push(i);
 					}
-				}
+				};
+				config_bet.money=this.fun_store_count();
 				html.push(Tpl.bet(config_bet));
 				$('#main').html(html.join(''));
 				/* 垂直导航 */
@@ -164,16 +165,16 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 			fun_store_count:function(){
 				var code,count=0,tmp=[];
 				code=Store.get('ssq_code')||'';
-				console.log(code);
 				if(!code){
 					return;
-				}	
+				}
 				code=code.split(';');
 				for(var i=0,len=code.length;i<len;i++){
 					tmp=code[i].split('+');
 					count+=this.model.caculate(tmp[0].split(' ').length,tmp[1].split(' ').length);
 				}
 				$('.code_basket .label').text('￥'+count*2);
+				return count*2
 			},
 			pay_call : function (e) {},
 			fun_ownbuy : function () {
