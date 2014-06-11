@@ -78,7 +78,7 @@ module.exports = function (grunt) {
 						expand : true,
 						cwd : 'js/app/template/',
 						src : '**/*.handlebars',
-						dest : 'js/app/template/',
+						dest : 'js/app/template/compile',
 						filter : 'isFile',
 						ext : '-tpl.js'
 					}

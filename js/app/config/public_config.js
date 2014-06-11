@@ -23,10 +23,12 @@ require.config({
 		'm-bet':'../../../js/app/modules/m-bet',
 		'lottery':'../../../js/app/modules/lottery',
 		'feedback':'../../../js/app/modules/feedback',
-		'm-pay':'../../../js/app/modules/pay',
+		'm-pay':'../../../js/app/modules/m-pay',
 		'router':'../../../js/app/router',
-		'ssq-tpl':'../../../js/app/template/lottery/ssq/out',
-		'remider-tpl':'../../../js/app/template/public/remider-tpl',
-		'login-tpl':'../../../js/app/template/public/login-tpl'
+		'ssq-tpl':'../../../js/app/template/compile/lottery/ssq/out',
+		'remider-tpl':'../../../js/app/template/compile/public/remider-tpl',
+		'pay-tpl':'../../../js/app/template/compile/public/pay-tpl',
+		'public-tpl':'../../../js/app/template/compile/public/public-tpl',
+		'login-tpl':'../../../js/app/template/compile/public/login-tpl'
 	}
 });

@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'v-login','v-remider','store'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Vlogin,Vremider,Store) {
+define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq-tpl', 'timer', 'v-login','v-remider','store','public-tpl'], function (Backbone, $, Mssq, Mbet, Mpay, Pop, Dropdown, Tpl, Timer, Vlogin,Vremider,Store,PublicTpl) {
 	var mssq = new Mssq(); //双色球控制器
 	var mbet = new Mbet(); //投注控制器
 	var mpay = new Mpay(); //支付控制器
@@ -55,7 +55,20 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				'click .circular.button':'fun_select',
 				'change #red_r_num,#blue_r_num':'fun_random',
 				'click .red_clear,.blue_clear':'fun_clear_num',
-				'click #confirm':'fun_confirm'
+				'click #confirm':'fun_confirm',
+				'click .code_basket':'fun_basket',
+				'click .tabular .item':'fun_tab',
+				'click .reback':'fun_reback'
+			},
+			fun_reback:function(){
+				mbet.unbind('change:code', this.bet_call);
+				mpay.unbind('change:code', this.pay_call);
+				this.initialize();
+			},
+			fun_tab:function(e){
+				var $self=$(e.target);
+				$self.addClass('active').siblings('.item').removeClass('active');
+				$('.buy_tab .ui.item').eq($self.index()).show().siblings('.item').hide();
 			},
 			bet_call : function (e) {
 				switch (e.changed.code) {
@@ -177,51 +190,72 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				return count*2
 			},
 			pay_call : function (e) {},
+			fun_basket:function(){
+				var data={code:[]};
+				var code=Store.get('ssq_code');
+				var tmp;
+				if(code){
+					code=code.split(';');
+					for(var i=0,len=code.length;i<len;i++){
+						tmp=code[i].split('+');
+						code[i]={red:tmp[0],blue:tmp[1]};
+					}
+					data.code=code;
+					data.count=this.fun_store_count()/2;
+					data.money=data.count*2;
+					$('.betarea').html(Tpl.type(data));
+				}else{
+					Vremider.remider('alert','号码蓝为空','至少添加1注号码');
+				}
+			},
 			fun_ownbuy : function () {
+				var money=this.fun_store_count();
 				var param = {
 					buy_type : 'bet',
 					LotID : '220051',
-					BetCodes : '05 08 26 28 31 32+05',
+					BetCodes : Store.get('ssq_code'),
 					OneMoney : 2,
-					BetPageID : '1010',
-					DrawNo : '2014049',
-					BetMoney : 2,
+					BetPageID : '1099',
+					DrawNo : mssq.lott_info.Issue,
+					BetMoney : money,
 					BetMulti : 1
 				};
 				mbet.post(param, function () {
 					var xValue = this.xValue;
 					var code = this.xCode;
+					var param;
 					if (code == 0) {
-						var frame = '<input type="text" value="ss" id="user"><input type="password" value="ygh13284705287" id="pwd"><button class="confirm">ok</button>';
-							Q.box = new Pop({
-								title : 'Pay input',
-								content : frame,
-								footer : false,
-								ok_call : function () {
-									this.close();
-									var d_param = {
-										chan : "1",
-										from : 3,
-										orderamt : xValue.TradeMoney,
-										orderid : xValue.OrderID,
-										ordername : xValue.LotName,
-										ordertime : xValue.OrderTime,
-										paypass : "",
-										paytype : xValue.TypeID
-									}
-									mpay.post(d_param, function () {
-										Q.box = new Pop({
-												title : 'Pay result',
-												content : '<span>开奖时间：' + this.OpenTime + '</span>,<span>派奖时间：' + this.BonusTime + '</span>'
-											}).init();
-									});
-								},
-								cancel : true,
-								cancel_call : function () {
-									$('body').append('<p>cancel</p>')
-									this.close();
-								}
-							}).init();
+						param = {
+							title : xValue.LotName + xValue.LotID + '期',
+							money : xValue.TradeMoney / 100,
+							balance : '688898',
+							pay : true
+						};
+						var $pop = $(PublicTpl.pay(param));
+						$pop.modal('setting', {
+							selector : {
+								approve : '.actions .gopay',
+								deny : '.close'
+							},
+							onApprove : function () {
+								var d_param = {
+									chan : "1",
+									from : 3,
+									orderamt : xValue.TradeMoney,
+									orderid : xValue.OrderID,
+									ordername : xValue.LotName,
+									ordertime : xValue.OrderTime,
+									paypass : $('#pwd').val(),
+									paytype : xValue.TypeID
+								};
+								mpay.post(d_param, function () {
+									console.log('pay');
+								});
+							},
+							onDeny : function () {
+								$pop.remove();
+							}
+						}).modal('show');
 					}
 				});
 			},
