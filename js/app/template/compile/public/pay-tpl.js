@@ -20,7 +20,7 @@ function program1(depth0,data) {
   if (helper = helpers.balance) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.balance); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</b> 元</li>\r\n		<li>支付密码：<input type=\"password\" name=\"pwd\" id=\"pwd\" /></li>\r\n	 </ul>\r\n	</div>\r\n	<div class=\"actions\">\r\n	  <div class=\"ui negative button gopay\">\r\n		立即支付\r\n	  </div>\r\n	</div>\r\n</div>\r\n";
+    + "</b> 元</li>\r\n		<li>支付密码：<input type=\"password\" name=\"pwd\" id=\"pwd\" /></li>\r\n		<li id=\"err_pay\" class=\"none\"></li>\r\n	 </ul>\r\n	</div>\r\n	<div class=\"actions\">\r\n	  <div class=\"ui negative button gopay\">\r\n		立即支付\r\n	  </div>\r\n	</div>\r\n</div>\r\n";
   return buffer;
   }
 

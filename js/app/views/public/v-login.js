@@ -3,6 +3,7 @@ define(['backbone', 'jquery', 'm-login', 'login-tpl', 'modal'], function (Backbo
 	var $login;
 	var Vlogin = Backbone.View.extend({
 			initialize : function () {
+				login.unbind();
 				login.bind('change:isOn', this.login_call);
 				login.bind('change:msg', this.msg_call);
 			},

@@ -21,29 +21,9 @@ define(['lottery','backbone','./feedback','md5'],function(lottery,Backbone,feedb
 				dataType:'json',
 				timeout:10000,
 				success:function(res){
-					_self.count=0;
-					if(res&&typeof res=='object'){
-						// 用户信息、签名认证
-						if(res.errno){
-							_self.code=res.errno;
-							return;
-						}
-						// 钱包验证
-						if(res.result_code){
-							_self.code=res.result_code;
-							return;
-						}
-						// 投注验证
-						if(res.xCode){
-							_self.code=res.xCode;
-						}
-						if (callback && typeof callback == 'function') {
-							callback.call(res);
-						}
-					}else{
-						_self.code='-1';
+					if(callback&&typeof callback=='function'){
+						callback.call(null,res);
 					}
-					_self.get_msg();
 				},
 				error:function(){
 					if(_self.count<_self.limit){
@@ -55,44 +35,7 @@ define(['lottery','backbone','./feedback','md5'],function(lottery,Backbone,feedb
 			});
 		},
 		get_msg:function(){
-			switch(this.code){
-            	case '0':
-					this.msg='购买成功';
-					break;
-				case '-1':
-					this.msg='未知错误';
-					break;
-            	case '9998':
-					this.msg='网络错误';
-					break;
-            	case '9001':
-					this.msg='用户信息错误';
-					break;
-            	case '1619':
-					this.msg='签名错误';
-					break;
-            	case '1612':
-					this.msg='网络劫持';
-					break;
-            	case '1613':
-					this.msg='订单超时，需要重新支付';
-					break;
-            	case '1618':
-					this.msg='余额不足';
-					break;
-            	case '9003':
-					this.msg='尚未登录';
-					break;
-            	case '9004':
-					this.msg='账户异常';
-					break;
-            	case '1607':
-					this.msg='网络不稳定，支付结果未知';
-					break;
-            	default:
-					new feedback().send();
-            }
-			return this.msg;
+			
 		},
 		pwd_md5:function(txt){
 			return md5('fcfa5d2e|'+txt+'|fcfa5d2e');

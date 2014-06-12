@@ -61,9 +61,24 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				'click .reback':'fun_reback'
 			},
 			fun_reback:function(){
-				mbet.unbind('change:code', this.bet_call);
-				mpay.unbind('change:code', this.pay_call);
-				this.initialize();
+				var config_bet = {
+					red : [],
+					red_random : [],
+					blue : [],
+					blue_random : []
+				};
+				for(var i=1;i<34;i++){
+					config_bet.red.push({num:i<10?'0'+i:i});
+					if(i>5&&i<21){
+						config_bet.red_random.push(i);
+					}
+					if(i<17){
+						config_bet.blue.push({num:i<10?'0'+i:i});
+						config_bet.blue_random.push(i);
+					}
+				};
+				config_bet.money=this.fun_store_count();
+				$('.betarea').html(Tpl.bet(config_bet));
 			},
 			fun_tab:function(e){
 				var $self=$(e.target);
@@ -248,14 +263,25 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 									paypass : $('#pwd').val(),
 									paytype : xValue.TypeID
 								};
-								mpay.post(d_param, function () {
-									console.log('pay');
+								mpay.post(d_param, function (res) {
+									console.debug(res);
+									if(res.xCode==0){
+										$('#err_pay').html('').hide();
+									}else{
+										$('#err_pay').html('<b class="red">'+res.message+'</b>').show();
+									}
 								});
+								return false;
 							},
 							onDeny : function () {
 								$pop.remove();
 							}
 						}).modal('show');
+					}else{
+						if(code==2){
+							Vremider.remider('alert','订单错误',this.xMessage+'<br><a href="/pfpay?oid='+this.xValue.OrderID+'" target="_blank">完善信息</a>');
+						}
+						
 					}
 				});
 			},
