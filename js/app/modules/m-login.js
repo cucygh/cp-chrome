@@ -8,22 +8,25 @@ define(['backbone', 'md5', 'jquery'], function (Backbone, md5, $) {
 				var _this = this;
 				chrome.cookies.get({
 					"url" : _this.domain,
-					"name" : 'loginedUserName'
-				}, function (c) {
-					if (c) {
-						_this.set({
-							isOn : true,
-							userName : decodeURIComponent(c.value)
-						});
-					}
-				});
-				chrome.cookies.get({
-					"url" : _this.domain,
 					"name" : 'Q'
 				}, function (c) {
 					if (c) {
-						_this.set({
-							isOn : true,
+						$.ajax({
+							url:'http://login.360.cn/?o=sso&m=info&show_name_flag=1',
+							dataType:'json',
+							success:function(data){
+								_this.set({
+									userName:data.userName,
+									isOn:true
+								});
+							},
+							type:'post',
+							error:function(err){
+								_this.set({
+									userName:'未登录',
+									isOn:false
+								})
+							}
 						});
 					} else {
 						_this.set({

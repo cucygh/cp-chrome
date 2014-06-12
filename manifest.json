@@ -1,13 +1,13 @@
 {
 	"manifest_version" : 2,
 	"name" : "web-app",
-	"description" : "360彩票购彩助手-app",
+	"description" : "360彩票快手",
 	"version" : "1.0",
 	"browser_action" : {
 		"default_icon" : "icon.png",
 		"default_popup" : "html/lottery/ssq/ssq.html"
 	},
 	"permissions" : [
-		"cookies", "http://*.cp.360.cn/", "http://*.360.cn/", "http://*.qihoo.com/", "http://login.1360.com/", "http://login.woxihuan.com/", "http://login.so.com/", "http://login.360pay.cn/", "http://login.leidian.com/", "http://login.qikoo.com/","http://login.360kan.com/"
+		"cookies", "http://*.cp.360.cn/", "http://*.360.cn/", "http://*.qihoo.com/", "http://login.1360.com/", "http://login.woxihuan.com/", "http://login.so.com/", "http://login.360pay.cn/", "http://login.leidian.com/", "http://login.qikoo.com/","http://login.360kan.com/","http://login.360.cn/"
 	]
 }

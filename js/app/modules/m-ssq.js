@@ -3,6 +3,7 @@ define(['backbone', 'jquery', 'lottery', 'math'], function (Backbone, $, lottery
 			initialize : function () {
 				this.number = '';
 				this.id = '220051';
+				this.domain=lottery.domain;
 				this.lott_info = {
 					id : '220051'
 				};

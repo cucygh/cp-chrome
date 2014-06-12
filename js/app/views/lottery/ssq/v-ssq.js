@@ -194,7 +194,7 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 				var code,count=0,tmp=[];
 				code=Store.get('ssq_code')||'';
 				if(!code){
-					return;
+					return 0;
 				}
 				code=code.split(';');
 				for(var i=0,len=code.length;i<len;i++){
@@ -225,6 +225,7 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 			},
 			fun_ownbuy : function () {
 				var money=this.fun_store_count();
+				var _this=this;
 				var param = {
 					buy_type : 'bet',
 					LotID : '220051',
@@ -264,9 +265,30 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 									paytype : xValue.TypeID
 								};
 								mpay.post(d_param, function (res) {
-									console.debug(res);
 									if(res.xCode==0){
 										$('#err_pay').html('').hide();
+										Store.remove('ssq_code');
+										param={
+											pay:false,
+											kaijiang:'预计开奖时间：'+res.OpenTime,
+											paijiang:'预计派奖时间：'+res.BonusTime,
+											url:mssq.domain+'/detailinfo/ownbuy/traceid/0/projid/'+res.ProjID+'/lotid/'+res.LotID+'/'
+										}
+										$pop.remove();
+										$pop=$(PublicTpl.pay(param));
+										$pop.modal('setting', {
+											selector : {
+												approve : '.actions .reback',
+												deny : '.close'
+											},
+											onApprove:function(){
+												$pop.remove();
+												_this.fun_reback();
+											},
+											onDeny : function () {
+												$pop.remove();
+											}
+										});
 									}else{
 										$('#err_pay').html('<b class="red">'+res.message+'</b>').show();
 									}
@@ -280,8 +302,9 @@ define(['backbone', 'jquery', 'm-ssq', 'm-bet', 'm-pay', 'pop', 'dropdown', 'ssq
 					}else{
 						if(code==2){
 							Vremider.remider('alert','订单错误',this.xMessage+'<br><a href="/pfpay?oid='+this.xValue.OrderID+'" target="_blank">完善信息</a>');
+						}else{
+							Vremider.remider('alert','出错了',this.xMessage);
 						}
-						
 					}
 				});
 			},

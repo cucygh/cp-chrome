@@ -26,8 +26,21 @@ function program1(depth0,data) {
 
 function program3(depth0,data) {
   
-  
-  return "\r\n<div class=\"ui small modal transition visible active\" style=\"margin-top: -110px;\">\r\n	<i class=\"close icon\"></i>\r\n	<div class=\"header\">\r\n	  Changing Your Thing\r\n	</div>\r\n	<div class=\"content\">\r\n	  <p>Do you want to change that thing to something else?</p>\r\n	</div>\r\n	<div class=\"actions\">\r\n	  <div class=\"ui negative button\">\r\n		No\r\n	  </div>\r\n	  <div class=\"ui positive right labeled icon button\">\r\n		Yes\r\n		<i class=\"checkmark icon\"></i>\r\n	  </div>\r\n	</div>\r\n</div>\r\n";
+  var buffer = "", stack1, helper;
+  buffer += "\r\n<div class=\"ui small modal transition visible active\" style=\"margin-top: -110px;\">\r\n	<i class=\"close icon\"></i>\r\n	<div class=\"header\">\r\n	  购彩成功\r\n	</div>\r\n	<div class=\"content\">\r\n	  <p>系统正在提交中心出票，预计2分钟内完成</p>\r\n	  <p>";
+  if (helper = helpers.kaijiang) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.kaijiang); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\r\n	  <p>";
+  if (helper = helpers.paijiang) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.paijiang); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\r\n	</div>\r\n	<div class=\"actions\">\r\n	  <div class=\"ui negative button reback\">\r\n		继续购彩\r\n	  </div>\r\n	  <a href=\"";
+  if (helper = helpers.url) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.url); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" target=\"_blank\">查看购彩记录</a>\r\n	</div>\r\n</div>\r\n";
+  return buffer;
   }
 
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.pay), {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data});
