@@ -1,1 +1,0 @@
-define(["jquery","underscore","backbone","views/login","views/nav"],function(e,t,n,r,i){var s=n.Router.extend({initialize:function(){n.history.start()},routes:{login:"login",nav:"nav"},login:function(){var e=new r},nav:function(){var e=new i}});return s});
