@@ -2,20 +2,6 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg : grunt.file.readJSON("package.json"),
 		requirejs : {
-			compile : {
-				options : {
-					baseUrl : "js/",
-					paths : {
-						jquery : 'lib/jquery/1.11.0/jquery',
-						require : 'lib/require/2.1.11/require',
-						handlebars : 'gallery/1.3.0/handlebars',
-						router : 'app/router'
-
-					},
-					name : "app/test", // assumes a production build using almond
-					out : "online/js/app/test.js"
-				}
-			},
 			js_compile_all : {
 				options : {
 					appDir : 'js/',
@@ -23,42 +9,47 @@ module.exports = function (grunt) {
 					dir : './online/js/',
 					paths : {
 						jquery : 'lib/jquery/1.11.0/jquery',
-						require : 'lib/require/2.1.11/require',
 						backbone : 'lib/backbone/1.1.2/backbone',
 						underscore : 'lib/underscore/1.6.0/underscore',
 						handlebars : 'gallery/handlebars/1.3.0/handlebars',
 						md5 : 'gallery/md5/1.0.0/md5',
-						router : 'app/router',
-						'views/login' : 'app/views/login',
-						'views/nav' : 'app/views/nav',
-						'modules/login' : 'app/modules/login',
-						pop:'gallery/pop/1.0.0/pop',
-						"pop-tpl":'gallery/pop/1.0.0/pop-tpl'
+						pop : 'gallery/pop/1.0.0/pop',
+						modal : 'gallery/pop/3.0.0/modal',
+						dimmer : 'gallery/dimmer/1.0.0/dimmer',
+						dropdown : 'gallery/dropdown/1.0.0/dropdown',
+						transition : 'gallery/transition/1.0.0/transition',
+						timer : 'gallery/timer/1.0.0/timer',
+						store : 'gallery/store/1.0.0/store',
+						'pop-tpl' : 'gallery/pop/1.0.0/pop-tpl',
+						text : 'gallery/text/2.0.10/text',
+						math : 'gallery/math/1.0.0/math',
+						'v-ssq' : 'app/views/lottery/ssq/v-ssq',
+						'v-login' : 'app/views/public/v-login',
+						'v-remider' : 'app/views/public/v-remider',
+						'm-login' : 'app/modules/m-login',
+						'm-ssq' : 'app/modules/m-ssq',
+						'm-bet' : 'app/modules/m-bet',
+						'lottery' : 'app/modules/lottery',
+						'feedback' : 'app/modules/feedback',
+						'm-pay' : 'app/modules/m-pay',
+						'router' : 'app/router',
+						'ssq-tpl' : 'app/template/compile/lottery/ssq/out',
+						'remider-tpl' : 'app/template/compile/public/remider-tpl',
+						'pay-tpl' : 'app/template/compile/public/pay-tpl',
+						'public-tpl' : 'app/template/compile/public/public-tpl',
+						'login-tpl' : 'app/template/compile/public/login-tpl',
+						'bet-tpl' : 'app/template/compile/lottery/ssq/bet-tpl',
+						'menu-tpl' : 'app/template/compile/lottery/ssq/menu-tpl',
+						'nav-tpl' : 'app/template/compile/lottery/ssq/nav-tpl',
+						'buytype-tpl' : 'app/template/compile/lottery/ssq/buytype-tpl'
 					},
 					modules : [{
-							name : "app/test"
-						}, {
-							name : "app/test2"
-						}, {
 							name : "app/start"
 						}
 					],
 					preserveLicenseComments : false
 				}
-			},
-			css_compile_test : {
-				options : {
-					cssIn : "css/app/test.css",
-					out : "online/css/app/test.css"
-				}
-			},
-			css_compile_test2 : {
-				options : {
-					cssIn : "css/app/test2.css",
-					out : "online/css/app/test2.css"
-				}
 			}
-
 		},
 		copy : {
 			main : {
@@ -69,10 +60,10 @@ module.exports = function (grunt) {
 		handlebars : {
 			compile : {
 				options : {
-					amd:true,
-					namespace: false,
-					partialsUseNamespace:true,
-					expand:true
+					amd : true,
+					namespace : false,
+					partialsUseNamespace : true,
+					expand : true
 				},
 				files : [{
 						expand : true,
@@ -89,7 +80,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-handlebars');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.registerTask('build-app', ['requirejs:compile']);
 	grunt.registerTask('build', ['requirejs:js_compile_all']);
 	grunt.registerTask('template', ['handlebars:compile']);
 	grunt.registerTask('css', ['requirejs:css_compile_test', 'requirejs:css_compile_test2', 'copy:main']);
