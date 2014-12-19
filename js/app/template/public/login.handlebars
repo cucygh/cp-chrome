@@ -1,0 +1,35 @@
+ <div class="ui modal form segment">
+      <div class="field">
+        <label>用户名</label>
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="在此输入用户名" id="user" value="{{user}}">
+          <i class="user icon"></i>
+          <div class="ui corner label">
+            <i class="icon asterisk"></i>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>密码</label>
+        <div class="ui left labeled icon input">
+          <input type="password" id="pwd">
+          <i class="lock icon"></i>
+          <div class="ui corner label">
+            <i class="icon asterisk"></i>
+          </div>
+        </div>
+      </div>
+	  <div class="inline field none auth">
+		<input type="text" placeholder="请输入右侧验证码" id="captcha">
+        <div class="ui pointing left label">
+          <img height="33" width="auto" src="http://captcha.360.cn/image.php?app=caipiao&t=1401263483761" alt="验证码" />
+        </div>
+      </div>
+      <div class="ui error message">
+        <div class="header"></div>
+      </div>
+	  <div class="actions">
+		<div class="ui blue cancel button">取消</div>
+		<div class="ui blue login button">登录</div>
+	  </div>
+ </div>

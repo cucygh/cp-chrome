@@ -1,0 +1,40 @@
+{{#if pay}}
+<div class="ui small modal transition visible active" style="margin-top: -110px;">
+	<i class="close icon"></i>
+	<div class="header">
+	  确认付款
+	</div>
+	<div class="content">
+	  <ul>
+		<li>订单名称：{{title}}</li>
+		<li>支付金额：<b class="red">{{money}}</b> 元</li>
+		<li>现金余额：<b class="red">{{balance}}</b> 元</li>
+		<li>支付密码：<input type="password" name="pwd" id="pwd" /></li>
+		<li id="err_pay" class="none"></li>
+	 </ul>
+	</div>
+	<div class="actions">
+	  <div class="ui negative button gopay">
+		立即支付
+	  </div>
+	</div>
+</div>
+{{else}}
+<div class="ui small modal transition visible active" style="margin-top: -110px;">
+	<i class="close icon"></i>
+	<div class="header">
+	  购彩成功
+	</div>
+	<div class="content">
+	  <p>系统正在提交中心出票，预计2分钟内完成</p>
+	  <p>{{kaijiang}}</p>
+	  <p>{{paijiang}}</p>
+	</div>
+	<div class="actions">
+	  <div class="ui negative button reback">
+		继续购彩
+	  </div>
+	  <a href="{{url}}" target="_blank">查看购彩记录</a>
+	</div>
+</div>
+{{/if}}

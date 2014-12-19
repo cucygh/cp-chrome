@@ -1,0 +1,53 @@
+<article class="betarea">
+	<strong style="margin-left:2em;">玩法提示：</strong>至少选6个红球和1个蓝球组合成一注彩票，单注最高奖金<b class="red">1000万</b>元
+	<div class="redarea select">
+		<p><strong class="red">红球区 </strong>至少选择6个球</p>
+		<ul>
+			{{#each red}}
+			<li><div class="circular ui icon button">{{num}}</div><span class="yl none">01</span><input type="checkbox" class="dan none"/></li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="bluearea select">
+		<p><strong class="blue">蓝球区 </strong>至少选择1个球</p>
+		<ul>
+			{{#each blue}}
+			<li><div class="circular ui icon button">{{num}}</div><span class="yl none">12</span><input type="checkbox" class="dan none"/></li>
+			{{/each}}
+		</ul>
+	</div>
+	<p>
+			<select name="" id="red_r_num">
+				<option value="0">机选红球</option>
+				{{#each red_random}}
+				<option value="{{this}}">{{this}}</option>
+				{{/each}}
+			</select>
+			<input type="checkbox" id="red_yl"/>遗漏
+			<input type="checkbox" id="red_dan"/>定胆
+			<a href="#" class="clear red_clear">清空</a>
+			<select id="blue_r_num">
+				<option value="0">机选蓝球</option>
+				{{#each blue_random}}
+				<option value="{{this}}">{{this}}</option>
+				{{/each}}
+			</select>
+			<input type="checkbox" id="blue_yl"/>遗漏
+			<input type="checkbox" id="blue_dan"/>定胆
+			<a href="#" class="clear blue_clear">清空</a>
+	</p>
+	<p class="bet">
+		共选 <b class="red count">0</b> 注, <b class="red money">0</b> 元
+	</p>
+	<div class="bet">
+		<div class="ui youtube button" id="confirm">确认选号</div>
+	</div>
+	<div class="ui yellow  message">目前奖池 <b class="red">5553</b> 万 <b class="red">4992</b> 元，至少可以开出 <b class="red">11</b> 注500万大奖
+		<div class="ui compact menu code_basket">
+		  <a class="item">
+			<div class="floating ui red label">￥{{money}}</div>
+			双色球号码篮
+		  </a>
+		</div>
+	</div>
+</article>

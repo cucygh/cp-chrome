@@ -1,0 +1,5 @@
+@import '../base/reset.css';
+@import '../base/animation.css';
+@import '../base/function.css';
+a{color:red;}
+body:{width:430px;}
